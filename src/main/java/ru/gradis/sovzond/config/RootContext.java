@@ -5,12 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import ru.gradis.sovzond.dao.ParcelDAO;
-import ru.gradis.sovzond.dao.ParcelDAOImpl;
+import ru.gradis.sovzond.dao.impl.ParcelDAOImpl;
 import ru.gradis.sovzond.dao.ReferenceDAO;
-import ru.gradis.sovzond.dao.ReferenceDAOImpl;
+import ru.gradis.sovzond.dao.impl.ReferenceDAOImpl;
 
 import javax.sql.DataSource;
 
@@ -28,15 +27,15 @@ public class RootContext extends WebMvcConfigurerAdapter {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/mo");
-		dataSource.setUsername("iportal6");
-		dataSource.setPassword("iportal66");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/iportal");
+		dataSource.setUsername("iportal");
+		dataSource.setPassword("iportal2");
 
 		return dataSource;
 	}
 
 	@Bean
-	public ReferenceDAO getContactDAO() {
+	public ReferenceDAO getReferenceDAO() {
 		return new ReferenceDAOImpl(getDataSource());
 	}
 

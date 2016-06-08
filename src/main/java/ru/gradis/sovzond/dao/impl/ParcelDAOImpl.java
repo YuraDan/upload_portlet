@@ -1,8 +1,12 @@
-package ru.gradis.sovzond.dao;
+package ru.gradis.sovzond.dao.impl;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import ru.gradis.sovzond.dao.ParcelDAO;
+import ru.gradis.sovzond.jdbc.mapper.ParcelRowMapper;
+import ru.gradis.sovzond.jdbc.sql.SqlStorage;
 import ru.gradis.sovzond.model.Parcel;
 
 import javax.sql.DataSource;
@@ -15,6 +19,7 @@ import java.util.Map;
  * Created by donchenko-y on 6/6/16.
  */
 public class ParcelDAOImpl implements ParcelDAO {
+
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -31,26 +36,10 @@ public class ParcelDAOImpl implements ParcelDAO {
 	public List<Parcel> list() {
 		ObjectMapper mapper = new ObjectMapper();
 
-		String sql = "SELECT * FROM parcel";
-		List<Parcel> parcelList = jdbcTemplate.query(sql, new RowMapper<Parcel>() {
+		String sql = SqlStorage.GET_ALL_PARCEL;
 
-			@Override
-			public Parcel mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Parcel ref = new Parcel();
+		List<Parcel> parcelList = jdbcTemplate.query(sql, new ParcelRowMapper());
 
-				ref.setId(rs.getInt("id"));
-				ref.setAddressNote(rs.getString("addressnote"));
-				ref.setArea(rs.getString("area"));
-				ref.setCategory(rs.getString("category"));
-				ref.setCnum(rs.getString("cnum"));
-				ref.setDateCreated(rs.getString("datecreated"));
-				ref.setUtilizationByDoc(rs.getString("utilizationbydoc"));
-				ref.setCost(rs.getString("cost"));
-
-				return ref;
-			}
-
-		});
 		return parcelList;
 	}
 

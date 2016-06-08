@@ -10,6 +10,5 @@ import ru.gradis.sovzond.dao.ReferenceDAO;
 public class ReferenceController {
 
 	private ReferenceDAO referenceDAO;
-
-
+	
 }

@@ -51,9 +51,9 @@ public class HomeController {
 	@Autowired
 	private ParcelDAO parcelDAO;
 
-	@SuppressWarnings("SpringJavaAutowiringInspection")
-	@Autowired
-	private ReferenceDAO referenceDAO;
+//	@SuppressWarnings("SpringJavaAutowiringInspection")
+//	@Autowired
+//	private ReferenceDAO referenceDAO;
 
 	private static final Log log = LogFactoryUtil.getLog(HomeController.class);
 
@@ -68,25 +68,15 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
-//
-//		model.addAttribute("serverTime", formattedDate);
-//		model.add
 
-		List<Reference> listRef = referenceDAO.list();
 		List<Parcel> parcels = parcelDAO.list();
 
-		List<Map<String, Object>> listRef2 = referenceDAO.selectAll();
-		String size = String.valueOf(listRef.size());
-
-		String json = mapper.writeValueAsString(listRef);
+		String size = String.valueOf(parcels.size());
 
 		String parelsJson = mapper.writeValueAsString(parcels);
 
-		model.addObject("listRef", listRef);
 		model.addObject("serverTime", formattedDate);
 		model.addObject("size", size);
-		model.addObject("json", json);
-		model.addObject("getAll", listRef2);
 		model.addObject("parcels", parelsJson);
 		model.setViewName("home");
 

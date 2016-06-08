@@ -1,7 +1,9 @@
-package ru.gradis.sovzond.dao;
+package ru.gradis.sovzond.dao.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import ru.gradis.sovzond.dao.ReferenceDAO;
+import ru.gradis.sovzond.jdbc.sql.SqlStorage;
 import ru.gradis.sovzond.model.Reference;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -34,7 +36,8 @@ public class ReferenceDAOImpl implements ReferenceDAO {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		String sql = "SELECT * FROM country";
+		String sql = SqlStorage.GET_ALL_COUNTRY;
+
 		List<Reference> listRef = jdbcTemplate.query(sql, new RowMapper<Reference>() {
 
 			@Override
