@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Configuring DataGrid</title>
+        <meta charset="utf-8" />
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!--<![endif]-->
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+        <script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.9/js/dx.webappjs.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://cdn3.devexpress.com/jslib/15.2.9/css/dx.common.css" />
+        <link rel="stylesheet" type="text/css" href="http://cdn3.devexpress.com/jslib/15.2.9/css/dx.light.css" />
+        <script type="text/javascript" src="grid.js"></script>
+    </head>
+    <body>
+        
+        <div style="height:420px; max-width:750px; margin: 0 auto" data-bind="dxDataGrid: {
+            dataSource: books,
+            columns: [
+    			{ dataField: 'author', width: 125 },
+                { dataField: 'title', allowGrouping: false },
+    			{ dataField: 'year', width: 60, sortIndex: 0, sortOrder: 'asc', allowGrouping: false },
+    			{ dataField: 'genre', visible: false },
+    			{ dataField: 'price', width: 60, format: 'currency', precision: 2, visible: false, allowGrouping: false },
+    			{ dataField: 'length', width: 65, allowGrouping: false },
+    			{ dataField: 'format', width: 90 }
+            ],
+            columnChooser: { enabled: true },
+            allowColumnReordering: true,
+            sorting: { mode: 'multiple' },
+            groupPanel: { visible: true, emptyPanelText: 'Drag a column header here to group grid records' },
+            pager: { visible: true },
+            paging: { pageSize: 7 },
+            editing: {
+                editEnabled: true,
+                editMode: 'row',
+                insertEnabled: true,
+                removeEnabled: true
+            },
+            filterRow: { visible: true },
+            searchPanel: { visible: true },
+            selection: { mode: 'none' }
+        }">
+        </div>
+        
+    </body>
+</html>
