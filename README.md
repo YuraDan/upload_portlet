@@ -67,9 +67,3 @@ Run the maven archetype generate command.  Follow the prompts to specify the gro
 $ mvn archetype:generate -DarchetypeCatalog=local
 ```
 
-Licence
--------
-
-Copyright 2015 Red Barn Consulting
-
-Licenced under the LGPL Licence, Version 3.0: http://www.gnu.org/licenses/lgpl.html
