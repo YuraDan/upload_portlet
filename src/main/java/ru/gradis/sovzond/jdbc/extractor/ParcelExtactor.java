@@ -2,7 +2,7 @@ package ru.gradis.sovzond.jdbc.extractor;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import ru.gradis.sovzond.model.Parcel;
+import ru.gradis.sovzond.model.entity.Parcel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

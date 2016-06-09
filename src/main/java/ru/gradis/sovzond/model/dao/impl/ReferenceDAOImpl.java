@@ -1,10 +1,10 @@
-package ru.gradis.sovzond.dao.impl;
+package ru.gradis.sovzond.model.dao.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import ru.gradis.sovzond.dao.ReferenceDAO;
+import ru.gradis.sovzond.model.dao.ReferenceDAO;
 import ru.gradis.sovzond.jdbc.sql.SqlStorage;
-import ru.gradis.sovzond.model.Reference;
+import ru.gradis.sovzond.model.entity.Reference;
 
 import org.codehaus.jackson.map.ObjectMapper;
 

@@ -1,9 +1,11 @@
-package ru.gradis.sovzond.model;
+package ru.gradis.sovzond.model.entity;
+
+import ru.gradis.sovzond.model.DomainObject;
 
 /**
  * Created by donchenko-y on 6/6/16.
  */
-public class Parcel {
+public class Parcel implements DomainObject {
 	private int id;
 	private String cnum;
 	private String area;

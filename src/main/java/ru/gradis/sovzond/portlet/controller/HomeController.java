@@ -14,31 +14,23 @@
  * You should have received a copy of the GNU General Public License along with
  * liferay-spring-mvc-portlet. If not, see <http://www.gnu.org/licenses/>.
  */
-package ru.gradis.sovzond.portlet;
+package ru.gradis.sovzond.portlet.controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import org.springframework.web.servlet.ModelAndView;
-import ru.gradis.sovzond.dao.ParcelDAO;
-import ru.gradis.sovzond.dao.ReferenceDAO;
-import ru.gradis.sovzond.model.Parcel;
-import ru.gradis.sovzond.model.Reference;
+import ru.gradis.sovzond.model.dao.ParcelDAO;
+import ru.gradis.sovzond.model.entity.Parcel;
+import ru.gradis.sovzond.util.JsonBuilder;
 
 /**
  * Handles requests for the view mode.
@@ -59,25 +51,13 @@ public class HomeController {
 
 	@RenderMapping
 	public ModelAndView home(Locale locale, ModelAndView model) throws IOException {
-		ObjectMapper mapper = new ObjectMapper();
 
 
-		log.info("Welcome home! the client locale is " + locale.toString());
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
+		log.info("Welcome home from portlet MVC! the client locale is " + locale.toString());
 
 		List<Parcel> parcels = parcelDAO.list();
 
-		String size = String.valueOf(parcels.size());
-
-		String parelsJson = mapper.writeValueAsString(parcels);
-
-		model.addObject("serverTime", formattedDate);
-		model.addObject("size", size);
-		model.addObject("parcels", parelsJson);
+		model.addObject("parcels", JsonBuilder.getJsonStringFromList(parcels));
 		model.setViewName("home");
 
 		return model;

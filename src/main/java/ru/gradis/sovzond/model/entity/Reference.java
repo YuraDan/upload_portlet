@@ -1,12 +1,12 @@
-package ru.gradis.sovzond.model;
+package ru.gradis.sovzond.model.entity;
 
 
-import java.io.Serializable;
+import ru.gradis.sovzond.model.DomainObject;
 
 /**
  * Created by donchenko-y on 6/1/16.
  */
-public class Reference implements Serializable {
+public class Reference implements DomainObject {
 
 	private int id;
 	private String name;

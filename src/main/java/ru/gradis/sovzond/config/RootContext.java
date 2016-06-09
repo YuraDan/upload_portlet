@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import ru.gradis.sovzond.dao.ParcelDAO;
-import ru.gradis.sovzond.dao.impl.ParcelDAOImpl;
-import ru.gradis.sovzond.dao.ReferenceDAO;
-import ru.gradis.sovzond.dao.impl.ReferenceDAOImpl;
+import ru.gradis.sovzond.model.dao.ParcelDAO;
+import ru.gradis.sovzond.model.dao.impl.ParcelDAOImpl;
+import ru.gradis.sovzond.model.dao.ReferenceDAO;
+import ru.gradis.sovzond.model.dao.impl.ReferenceDAOImpl;
 
 import javax.sql.DataSource;
 
@@ -34,10 +34,10 @@ public class RootContext extends WebMvcConfigurerAdapter {
 		return dataSource;
 	}
 
-	@Bean
-	public ReferenceDAO getReferenceDAO() {
-		return new ReferenceDAOImpl(getDataSource());
-	}
+//	@Bean
+//	public ReferenceDAO getReferenceDAO() {
+//		return new ReferenceDAOImpl(getDataSource());
+//	}
 
 	@Bean
 	public ParcelDAO getParcelDAO() {

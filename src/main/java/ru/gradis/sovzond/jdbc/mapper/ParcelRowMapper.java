@@ -1,7 +1,7 @@
 package ru.gradis.sovzond.jdbc.mapper;
 
 import ru.gradis.sovzond.jdbc.extractor.ParcelExtactor;
-import ru.gradis.sovzond.model.Parcel;
+import ru.gradis.sovzond.model.entity.Parcel;
 
 import org.springframework.jdbc.core.RowMapper;
 

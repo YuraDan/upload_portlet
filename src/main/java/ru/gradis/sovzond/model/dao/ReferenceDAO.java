@@ -1,6 +1,6 @@
-package ru.gradis.sovzond.dao;
+package ru.gradis.sovzond.model.dao;
 
-import ru.gradis.sovzond.model.Reference;
+import ru.gradis.sovzond.model.entity.Reference;
 
 import java.util.List;
 import java.util.Map;
