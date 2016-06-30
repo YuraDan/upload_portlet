@@ -1,11 +1,19 @@
+<%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<portlet:defineObjects/>
 
+<%
+	boolean showLocationAddress_view = GetterUtil.getBoolean(portletPreferences.getValue("somePreferenceKey", StringPool.TRUE));
+%>
 
 <%
 	//	String myVar = (String) request.getAttribute("json");
 	String parcels = (String) request.getAttribute("parcels");
 %>
 
+<h2>GET PERIF : </h2><p>(<%= showLocationAddress_view %>)</p>
 
 <script type="text/javascript">
 	<%--var books2 = <%=myVar%>;--%>

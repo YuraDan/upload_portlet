@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 
 <portlet-app
-	version="2.0"
-	xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" >
+		version="2.0"
+		xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
 
 	<portlet>
 		<portlet-name>liferay-spring-mvc-portlet</portlet-name>
@@ -13,6 +13,10 @@
 		<init-param>
 			<name>contextConfigLocation</name>
 			<value>/WEB-INF/spring/portlet-context.xml</value>
+		</init-param>
+		<init-param>
+			<name>config-template</name>
+			<value>/html/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
