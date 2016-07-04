@@ -1,5 +1,9 @@
 package ru.gradis.sovzond.util;
 
+import com.liferay.portal.kernel.json.JSONException;
+import com.liferay.portal.kernel.json.JSONFactory;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -24,5 +28,16 @@ public class JsonBuilder {
 		}
 		return null;
 	}
+
+	public JSONObject getJsonFromString(String json) {
+		JSONFactory factory = JSONFactoryUtil.getJSONFactory();
+		try {
+			return factory.createJSONObject(json);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }

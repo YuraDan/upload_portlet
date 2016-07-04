@@ -1,4 +1,4 @@
-package ru.gradis.sovzond.model;
+package ru.gradis.sovzond.model.domain;
 
 import java.io.Serializable;
 

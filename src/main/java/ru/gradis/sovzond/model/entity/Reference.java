@@ -1,7 +1,7 @@
 package ru.gradis.sovzond.model.entity;
 
 
-import ru.gradis.sovzond.model.DomainObject;
+import ru.gradis.sovzond.model.domain.DomainObject;
 
 /**
  * Created by donchenko-y on 6/1/16.

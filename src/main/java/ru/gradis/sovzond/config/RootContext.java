@@ -7,9 +7,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import ru.gradis.sovzond.model.dao.ParcelDAO;
+import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
 import ru.gradis.sovzond.model.dao.impl.ParcelDAOImpl;
 import ru.gradis.sovzond.model.dao.ReferenceDAO;
 import ru.gradis.sovzond.model.dao.impl.ReferenceDAOImpl;
+import ru.gradis.sovzond.model.dao.impl.XmlAnalysisDAOImpl;
 
 import javax.sql.DataSource;
 
@@ -27,9 +29,9 @@ public class RootContext extends WebMvcConfigurerAdapter {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/iportal");
-		dataSource.setUsername("iportal");
-		dataSource.setPassword("iportal2");
+		dataSource.setUrl("jdbc:postgresql://192.168.42.21:5432/mo");
+		dataSource.setUsername("rc7postgres");
+		dataSource.setPassword("9PmAPWXHefUn");
 
 		return dataSource;
 	}
@@ -42,5 +44,10 @@ public class RootContext extends WebMvcConfigurerAdapter {
 	@Bean
 	public ParcelDAO getParcelDAO() {
 		return new ParcelDAOImpl(getDataSource());
+	}
+
+	@Bean
+	public XmlAnalysisDAO getXmlAnalysisDAO() {
+		return new XmlAnalysisDAOImpl(getDataSource());
 	}
 }
