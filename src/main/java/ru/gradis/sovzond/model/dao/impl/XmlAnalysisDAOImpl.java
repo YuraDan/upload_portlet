@@ -25,7 +25,7 @@ import java.util.Map;
 public class XmlAnalysisDAOImpl implements XmlAnalysisDAO {
 
 
-	private static final Log log = LogFactoryUtil.getLog(JsonBuilder.class);
+	private static final Log log = LogFactoryUtil.getLog(XmlAnalysisDAOImpl.class);
 
 	private SimpleJdbcCall simpleJdbcCall;
 

@@ -55,7 +55,7 @@
 		}])
 		//--- Сохранение регистрационных данных ---
 		.factory('registration', ['$http', function ($http) {
-			var url = 'registration';
+			var url = 'delegate/services/registration';
 
 			return function (formData, successCallback, failCallback) {
 				$http.get(url, {

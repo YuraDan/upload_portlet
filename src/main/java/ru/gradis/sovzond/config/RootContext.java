@@ -7,10 +7,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import ru.gradis.sovzond.model.dao.ParcelDAO;
+import ru.gradis.sovzond.model.dao.UserRegistrDAO;
 import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
 import ru.gradis.sovzond.model.dao.impl.ParcelDAOImpl;
 import ru.gradis.sovzond.model.dao.ReferenceDAO;
 import ru.gradis.sovzond.model.dao.impl.ReferenceDAOImpl;
+import ru.gradis.sovzond.model.dao.impl.UserRegistrDAOImpl;
 import ru.gradis.sovzond.model.dao.impl.XmlAnalysisDAOImpl;
 
 import javax.sql.DataSource;
@@ -50,4 +52,10 @@ public class RootContext extends WebMvcConfigurerAdapter {
 	public XmlAnalysisDAO getXmlAnalysisDAO() {
 		return new XmlAnalysisDAOImpl(getDataSource());
 	}
+
+	@Bean
+	public UserRegistrDAO getUserRegistrDAO() {
+		return new UserRegistrDAOImpl(getDataSource());
+	}
+
 }

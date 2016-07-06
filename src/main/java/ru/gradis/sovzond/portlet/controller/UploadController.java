@@ -1,24 +1,18 @@
 package ru.gradis.sovzond.portlet.controller;
 
 import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.util.PortalUtil;
+import com.liferay.portal.kernel.log.LogFactoryUtil;;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+
 import org.springframework.web.multipart.MultipartFile;
 import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
 import ru.gradis.sovzond.model.domain.FileVO;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-
-import static org.apache.commons.io.FileUtils.ONE_GB;
 
 /**
  * Created by donchenko-y on 6/30/16.
