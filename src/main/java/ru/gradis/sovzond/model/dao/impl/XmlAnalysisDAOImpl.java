@@ -13,6 +13,8 @@ import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
 import ru.gradis.sovzond.util.JsonBuilder;
 
 import javax.sql.DataSource;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,13 +46,14 @@ public class XmlAnalysisDAOImpl implements XmlAnalysisDAO {
 		inParamMap.put("i_body", file);
 		inParamMap.put("i_name", name);
 		inParamMap.put("i_extension", extension);
-		log.info(inParamMap.toString());
 		MapSqlParameterSource in = new MapSqlParameterSource().addValues(inParamMap);
-		log.info(in.getValue("i_body"));
 		Map<String, Object> simpleJdbcCallResult = simpleJdbcCall.execute(in);
 		System.out.println(simpleJdbcCallResult);
 		log.info(simpleJdbcCallResult);
-		return simpleJdbcCallResult.get("result_json").toString();
+
+		String result = simpleJdbcCallResult.get("result_json").toString();
+		System.out.println(result);
+		return result;
 	}
 
 }

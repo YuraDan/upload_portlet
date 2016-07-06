@@ -4,9 +4,9 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>au.com.redbarn</groupId>
-	<artifactId>liferay-spring-mvc-portlet</artifactId>
+	<artifactId>liferay-upload-portlet</artifactId>
 	<packaging>war</packaging>
-	<name>Liferay Spring MVC Portlet</name>
+	<name>Liferay Upload-Portlet</name>
 	<version>1.6-RELEASE</version>
 
 	<prerequisites>
@@ -48,6 +48,12 @@
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>util-java</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-bridges</artifactId>
 			<version>${liferay.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -185,6 +191,11 @@
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
 			<version>RELEASE</version>
 		</dependency>
 	</dependencies>
