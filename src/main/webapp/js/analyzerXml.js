@@ -49,7 +49,7 @@
 	angular.module('analyzerXml', ['uploadFile', 'dataView', 'frame', 'chart', 'dataForm'])
 	//--- Получение URL карты ---
 		.factory('geoserverLayerView', ['$resource', function ($resource) {
-			var url = 'geoserverLayerView';
+			var url = 'delegate/services/geoserverLayerView/';
 
 			return $resource(url, {}, {}, {cancellable: true});
 		}])

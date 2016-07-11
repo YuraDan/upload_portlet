@@ -1,9 +1,9 @@
-package ru.gradis.sovzond.util;
+package ru.gradis.sovzond.geoserver;
 
 /**
  * Created by donchenko-y on 7/7/16.
  */
-public class Geoserver {
+public class GeoserverParam {
 
 	public static String GEOSERVER_URL = "http://geoportal.sovzond.ru:10090/geoserver";
 	public static String GEOSERVER_USER = "admin";

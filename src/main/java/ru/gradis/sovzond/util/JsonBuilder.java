@@ -29,7 +29,7 @@ public class JsonBuilder {
 		return null;
 	}
 
-	public JSONObject getJsonFromString(String json) {
+	public static JSONObject getJsonFromString(String json) {
 		JSONFactory factory = JSONFactoryUtil.getJSONFactory();
 		try {
 			return factory.createJSONObject(json);
@@ -37,6 +37,16 @@ public class JsonBuilder {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static JSONObject getJsonObj() {
+		JSONFactory factory = JSONFactoryUtil.getJSONFactory();
+		JSONObject jsonObject = factory.createJSONObject();
+		return factory.createJSONObject();
+	}
+
+	public static String getStringFromJson(JSONObject jsonObject) {
+		return jsonObject.toString();
 	}
 
 

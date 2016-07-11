@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import ru.gradis.sovzond.geoserver.Geoserver;
 import ru.gradis.sovzond.model.dao.ParcelDAO;
 import ru.gradis.sovzond.model.dao.UserRegistrDAO;
 import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
@@ -57,5 +58,11 @@ public class RootContext extends WebMvcConfigurerAdapter {
 	public UserRegistrDAO getUserRegistrDAO() {
 		return new UserRegistrDAOImpl(getDataSource());
 	}
+
+	@Bean
+	public Geoserver getGeoserver() {
+		return new Geoserver();
+	}
+
 
 }
