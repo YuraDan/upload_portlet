@@ -11,7 +11,9 @@
                 closeOnOutsideClick: false
             },
             form: {
-                colCount: 2
+                colCount: 2,
+                showRequiredMark: true,
+                showValidationSummary: false
             },
             cancel: {
                 text: 'Отменить'
@@ -31,7 +33,8 @@
                 interfaceConnector: '^grInterfaceConnector'
             },
             controller:['$scope', '$element', function ($scope, $element) {
-                var iDataForm;
+                var iDataForm,
+                    form;
 
                 //--- Контекст ---
                 extend($scope, {
@@ -54,6 +57,10 @@
                     bindingOptions: {
                         formData: 'formData',
                         items: 'items'
+                    },
+                    //--- Таблица проинициализирована ---
+                    onInitialized: function (e) {
+                        form = e.component;
                     }
                 });
                 extend(settings.cancel, {
@@ -65,7 +72,7 @@
                 extend(settings.save, {
                     onClick: function(e){
                         $scope.isShownPopup = false;
-                        iDataForm.onSave($scope.formData);
+                        form.validate().isValid && iDataForm.onSave($scope.formData);
                     }
                 });
 
@@ -83,7 +90,13 @@
                                     record,
                                     formData = {},
                                     items = [],
-                                    itemSettings;
+                                    itemSettings,
+                                    email = '',
+                                    telephoneMask = '+7(000)000-0000',
+                                    telephone = ''/*,
+                                    compareEmailAndTelephone = function(){
+                                        return email !== '' || telephone !== '';
+                                    }*/;
 
                                 for(i = 0, max = importData.length; i < max; i++){
                                     record = importData[i];
@@ -97,6 +110,16 @@
                                     };
                                     switch(record.field){
                                         case 'name':
+                                            extend(itemSettings,
+                                                {
+                                                    editorType: 'dxTextBox',
+                                                    validationRules: [
+                                                        {
+                                                            type: 'required',
+                                                            message: ''
+                                                        }
+                                                    ]
+                                                });
                                             itemSettings.editorType = 'dxTextBox';
                                             break;
 
@@ -105,17 +128,49 @@
                                             break;
 
                                         case 'email':
-                                            itemSettings.editorType = 'dxTextBox';
-                                            itemSettings.editorOptions = {
-                                                mode: 'email'
-                                            };
+                                            extend(itemSettings,
+                                                {
+                                                    editorType: 'dxTextBox',
+                                                    editorOptions: {
+                                                        mode: 'email'/*,//Для мобильных устройств
+                                                        valueChangeEvent: 'keyup',
+                                                        onValueChanged: function(e){
+                                                            email = e.value;
+                                                        }*/
+                                                    },
+                                                    validationRules: [
+                                                        {
+                                                            type: 'email',
+                                                            message: ''
+                                                        },
+                                                        {
+                                                            type: 'required',
+                                                            message: ''
+                                                        }
+                                                    ]
+                                                });
+
                                             break;
 
                                         case 'telephone':
-                                            itemSettings.editorType = 'dxTextBox';
-                                            itemSettings.editorOptions = {
-                                                mode: 'tel'
-                                            };
+                                            extend(itemSettings,
+                                                {
+                                                    editorType: 'dxTextBox',
+                                                    editorOptions: {
+                                                        mode: 'tel',//Для мобильных устройств
+                                                        //--- Маска ---
+                                                        mask: telephoneMask,
+                                                        useMaskedValue: true,
+                                                        maskInvalidMessage: ''
+                                                    },
+                                                    validationRules: [
+                                                        {
+                                                            type: 'required',
+                                                            message: ''
+                                                        }
+                                                    ]
+                                                });
+
                                             break;
 
                                         case 'pageId':

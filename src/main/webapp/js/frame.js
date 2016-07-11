@@ -2,28 +2,10 @@
     var //--- Настройки ---
         settings = {},
         extend = angular.extend,
-        onLoad = function(e){
-            var $scope = e.data;
-
-            $scope.isLoad = true;
-        },
         onResize = function(e){
-            var frame = e.data.frame,
-                $scope = e.data.scope;
+            var element = e.data.element;
 
-            $scope.frameWidth = frame.get(0).clientWidth - 16;
-            $scope.params.height = $scope.frameWidth * 0.55;
-            refresh($scope);
-        },
-        refresh = function($scope){
-            var params = $scope.params;
-
-            $scope.params = {};
-            window.setTimeout(
-                function() {
-                    $scope.params = params;
-                },
-                100);
+            element.css('height', (element.get(0).clientWidth * 0.53) + 'px');
         };
 
     angular.module('frame', [])
@@ -33,34 +15,24 @@
             };
         }])
         .filter('layerExtent', function(){
-            return function(params, frameWidth){
-                var bbox = params.bbox,
-                    extentWidth,
-                    extentHeight,
-                    width,
-                    height;
+            return function(params){
+                var bbox = params.bbox;
 
                 if (bbox === undefined){
                     return params.url;
                 }
                 bbox = angular.fromJson(bbox);
 
-                extentWidth = bbox.maxx - bbox.minx;
-                extentHeight = bbox.maxy - bbox.miny;
-                if (extentWidth <= 0 || extentHeight <= 0) {
+                if (bbox.maxx - bbox.minx <= 0 || bbox.maxy - bbox.miny <= 0) {
                     return params.url;
                 }
 
-                //params.width = width = frameWidth - 100;
-                //height = Math.ceil(width * (extentHeight / extentWidth));
-                //params.height = height + 104 + 237;
-
-                params.height = frameWidth * 0.55;
-
                 return params.url +
-                    '&bbox=' + bbox.minx + ',' + bbox.miny + ',' + bbox.maxx + ',' + bbox.maxy +
-                    '&width=' + width +
-                    '&height=' + height;
+                    '&bbox=' +
+                    (+bbox.minx).toString() + ',' +
+                    (+bbox.miny).toString() + ',' +
+                    (+bbox.maxx).toString() + ',' +
+                    (+bbox.maxy).toString()
             };
         })
         .component('grFrame', {
@@ -73,10 +45,7 @@
                 //--- Контекст ---
                 extend($scope, {
                     settings: settings,
-                    params: {},
-                    isLoad: false,
-                    frameWidth: 0,
-                    height: 0
+                    params: {}
                 });
 
                 this.$postLink = function(){
@@ -85,25 +54,16 @@
                     //--- Фрейм ---
                     if (frame = $element.find('.frame')){
 
-                        //--- Фрейм загружен ---
-                        frame.on('load', null, $scope, onLoad);
-
                         onResize({
                             data: {
-                                frame: frame,
-                                scope: $scope
+                                element: $element
                             }
                         });
 
-                        //--- Изменение карты при изменении размеров окна ---
+                        //--- Изменение высоты контейнера при изменении размеров окна ---
                         $(window).on('resize', null, {
-                            frame: frame,
-                            scope: $scope
-                        }, function(){
-                            $scope.frameWidth = frame.get(0).clientWidth - 16;
-                            $scope.params.height = $scope.frameWidth * 0.55;
-
-                        });
+                            element: $element
+                        }, onResize);
                     }
                 };
 
@@ -120,7 +80,14 @@
                             },
 
                             refresh: function(){
-                                refresh($scope);
+                                var params = $scope.params;
+
+                                $scope.params = {};
+                                window.setTimeout(
+                                    function() {
+                                        $scope.params = params;
+                                    },
+                                    100);
                             }
                         }
                     );
