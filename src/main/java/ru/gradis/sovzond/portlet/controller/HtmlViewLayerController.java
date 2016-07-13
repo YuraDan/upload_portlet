@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 public class HtmlViewLayerController {
+
 	@RequestMapping(value = "/services/htmlLayerView", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	public

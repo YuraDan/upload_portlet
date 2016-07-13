@@ -54,6 +54,7 @@
 				}, 100);
 			});
 		};
+	
 
 	angular.module('analyzerXml', ['uploadFile', 'dataView', 'frame', 'chart', 'dataForm'])
 	//--- Получение URL карты ---
