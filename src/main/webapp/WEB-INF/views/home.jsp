@@ -400,52 +400,12 @@
 			z-index: -1;
 		}
 
-		footer {
-			/*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAGXRFW…sJogQCkNlMDDgAE1AvUCHcaDgbaMf/z1++INnxhVw7AAIMABg6G9uePo3zAAAAAElFTkSuQmCC) repeat 0 0 #d4d7da;*/
-			/*box-shadow: 0 0 10px #767676;
-			color: #434343;*/
-			font-size: 12px;
-			font-weight: normal;
-			overflow: hidden;
-			padding-top: 20px;
-			padding-bottom: 19px;
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			z-index: 0;
-			/*margin-left: -70px;*/
-			/* margin-right: -170px; */
-			text-align: center;
-			/* padding-left: 70px; */
-			/* padding-right: 70px; */
-			background-color: #485152;
-			color: #f4f7f4;
-		}
-
-		footer:before {
-			content: '';
-			display: inline-block;
-			width: 28px;
-		}
-
-		footer address {
-			display: inline-block;
-			font-style: normal;
-		}
-
 		.wrapper {
 			position: relative;
 			min-height: 100%;
 			margin: 0 auto;
 			max-width: 4000px;
 			background-color: #f4f7f4;
-		}
-
-		.wrapper:before {
-			content: '';
-			display: block;
-			height: 29px;
-			background-color: #485152;
 		}
 
 		.gisColor span {
@@ -649,18 +609,6 @@
 			padding-bottom: 139px;
 		}
 
-		footer a {
-			color: #f4f7f4;
-		}
-
-		footer a:hover {
-			color: #f4f7f4;
-		}
-
-		footer a:visited {
-			color: #f4f7f4;
-		}
-
 		.dx-header-row td {
 			text-align: center !important;
 		}
@@ -730,10 +678,6 @@
 		</div>
 	</div>
 	<gr-analyzer-xml gr-interface-connector class="container"></gr-analyzer-xml>
-	<footer>© Компания «Совзонд», 2016. Все права защищены.
-		<address>115563, Москва, Шипиловская, 28а</address>
-		+7(495) 988-7511
-		<a href="mailto:sovzond@sovzond.ru">sovzond@sovzond.ru</a></footer>
 </div>
 </body>
 
