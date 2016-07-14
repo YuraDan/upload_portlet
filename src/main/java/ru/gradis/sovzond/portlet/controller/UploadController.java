@@ -39,7 +39,6 @@ public class UploadController {
 				byte[] bytesOfFile = file.getBytes();
 				json = (String) xmlAnalysisDAO.executeAnalysis(bytesOfFile, file.getName(), FilenameUtils.getExtension(file.toString()));
 				fileVO.setMessage(json);
-				log.info(json);
 				return json;
 			} catch (IOException e) {
 				log.error(e);
@@ -52,7 +51,6 @@ public class UploadController {
 		try {
 			return IOUtils.toByteArray(inputStream);
 		} catch (IOException e) {
-			e.printStackTrace();
 			log.error(e);
 		}
 		return null;

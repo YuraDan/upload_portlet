@@ -47,8 +47,7 @@ public class UserRegistrationController {
 
 			setUser(email, isHot, name, organization, pageId, telephone, user);
 			return new ResponseEntity<String>(userRegistrDAO.registrUser(user), HttpStatus.OK);
-//			String result = checkUser(user);
-//			if (!result.equals("true")) return result;
+
 		} else {
 			return new ResponseEntity<String>(ErrorToResponse.getJsonError("Укажите, пожалуйста, электронную почту, имя и телефон"), HttpStatus.BAD_REQUEST);
 //			throw new InvalidParameterException();

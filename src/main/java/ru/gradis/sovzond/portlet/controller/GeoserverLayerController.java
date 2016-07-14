@@ -4,7 +4,6 @@ import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.StringBundler;
-import it.geosolutions.geoserver.rest.decoder.RESTLayer;
 import it.geosolutions.geoserver.rest.decoder.RESTResource;
 import it.geosolutions.geoserver.rest.encoder.GSLayerEncoder;
 import it.geosolutions.geoserver.rest.encoder.feature.GSFeatureTypeEncoder;
@@ -77,7 +76,7 @@ public class GeoserverLayerController {
 	public String getLayerResToJson(RESTResource resourceFromLayer, String layerName) {
 
 		JSONObject jsonObject = JsonBuilder.getJsonObj();
-		JSONObject jsonObject2 = JsonBuilder.getJsonObj();
+//		JSONObject jsonObject2 = JsonBuilder.getJsonObj();
 
 
 		StringBundler stringBundler = new StringBundler("{");
@@ -101,13 +100,10 @@ public class GeoserverLayerController {
 		jsonObject.put("url", "delegate/services/htmlLayerView/?geoserverUrl=" + GeoserverParam.GEOSERVER_URL + "&name=" +
 				layerName.toLowerCase() + "&workspace=" + GeoserverParam.GEOSERVER_WORKSPACE);
 
-		jsonObject2.put("maxy", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMaxY()));
-		jsonObject2.put("miny", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMinY()));
-		jsonObject2.put("maxx", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMaxX()));
-		jsonObject2.put("minx", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMinX()));
-
-		System.out.println(stringBundler.toString());
-		System.out.println(jsonObject2.toString());
+//		jsonObject2.put("maxy", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMaxY()));
+//		jsonObject2.put("miny", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMinY()));
+//		jsonObject2.put("maxx", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMaxX()));
+//		jsonObject2.put("minx", String.valueOf(resourceFromLayer.getNativeBoundingBox().getMinX()));
 
 //		jsonObject.put("bbox", jsonObject2.toString());
 		jsonObject.put("bbox", stringBundler.toString());

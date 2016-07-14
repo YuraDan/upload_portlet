@@ -40,8 +40,6 @@ public class HtmlViewLayerController {
 		} catch (IOException e) {
 			return new ResponseEntity<String>(ErrorToResponse.getJsonError("Отсутствует шаблон для показа карты"), HttpStatus.BAD_REQUEST);
 		}
-		System.out.println(html);
-		System.out.println(String.format(html, geoserverUrl, workspace, name, bbox));
 		return new ResponseEntity<String>(String.format(html, geoserverUrl, workspace, name, bbox), HttpStatus.OK);
 	}
 
