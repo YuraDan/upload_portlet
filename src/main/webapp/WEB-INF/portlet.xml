@@ -24,9 +24,9 @@
 			<portlet-mode>view</portlet-mode>
 		</supports>
 		<portlet-info>
-			<title>Liferay Spring MVC Portlet</title>
-			<short-title>Liferay Spring MVC Portlet</short-title>
-			<keywords>liferay spring mvc portlet</keywords>
+			<title>Анализ КПТ</title>
+			<short-title>Анализ КПТ</short-title>
+			<keywords>Service kpt portlet</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>
