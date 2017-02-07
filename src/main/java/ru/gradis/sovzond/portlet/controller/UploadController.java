@@ -2,6 +2,9 @@ package ru.gradis.sovzond.portlet.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;;
+import com.liferay.portal.service.PortalService;
+import com.liferay.portal.util.PortalUtil;
+import com.liferay.portlet.PortalPreferences;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +43,7 @@ public class UploadController {
 				json = (String) xmlAnalysisDAO.executeAnalysis(bytesOfFile, file.getName(), FilenameUtils.getExtension(file.toString()));
 				fileVO.setMessage(json);
 				return json;
+//				PortalUtil.getPlidFromPortletId()
 			} catch (IOException e) {
 				log.error(e);
 			}

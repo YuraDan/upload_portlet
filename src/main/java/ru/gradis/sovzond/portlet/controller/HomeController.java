@@ -19,6 +19,8 @@ import ru.gradis.sovzond.model.dao.ParcelDAO;
 import ru.gradis.sovzond.model.dao.XmlAnalysisDAO;
 import ru.gradis.sovzond.model.domain.FileVO;
 
+import javax.portlet.RenderRequest;
+
 /**
  * Handles requests for the view mode.
  */
